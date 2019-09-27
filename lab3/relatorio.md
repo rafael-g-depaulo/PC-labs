@@ -1,14 +1,15 @@
 ## Relatório
 
-
 ### 1.1.1.
-Código implementado em *incremento.c*, e compilado e executado com 
-```
-gcc -o t incremento.c -lpthread
+
+Código implementado em *incremento.c*, e compilado e executado com
+
+```gcc -o t incremento.c -lpthread
 ./t
 ```
 
 ### 1.1.2. Qual o problema do codigo anterior? Se há algum problema, ele acontece sempre? Por quê?
+
 Nesse exemplo de código, o problema observado é que embora a variável seja compartilhada entre todas as *threads*, pode ocorrer de que duas ou mais *threads* incrementem a variável ao mesmo tempo. Como cada uma recebe a variável com um valor arbitrário X, ao termino de cada uma delas o novo valor da variável será X+1, mesmo que duas *threads* tenham incrementado.
 
 O problema não acontece sempre, porque depende do escalonador do *SO* a ordem de execução das threads, e nem sempre a condição de corrida vai ocorrer.
@@ -17,7 +18,9 @@ O problema não acontece sempre, porque depende do escalonador do *SO* a ordem d
 O problema do código pode ser consertado, se quando um thread for acessar a área crítica (a variável compartilhada), nenhuma outra thread acessá-la.
 
 ### 1.2. Quais sao as quatro condições para se evitar condições de corrida? 
+
 As quatro condições são:
+
   - Dois ou mais processos não podem estar simultaneamente dentro de suas regiões críticas.
   - Nenhuma consideração pode ser feita a respeito da velocidade relativa dos processos, ou a respeito dos processadores disponíveis.
   - Nenhum processo que esteja fora de sua região crítica pode bloquear a execução de outro processo.
