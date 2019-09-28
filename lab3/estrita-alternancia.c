@@ -4,7 +4,7 @@
 #define TRUE 1
 #define FALSE 0
 
-int quer[] = [FALSE, FALSE, FALSE];
+int quer[] = { FALSE, FALSE, FALSE };
 
 void *count_down(void *counter_p) {
   int * counter = (int*) counter_p;
